@@ -26,14 +26,12 @@ function Login() {
       password,
     };
     try {
-      await api.post("/login", user, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const { data } = await api.post("/login", user);
+      localStorage.setItem("user", data.token);
       setEmail("");
       setPassword("");
-      navigate("/profile");
+      navigate("/home");
+      window.location.reload();
     } catch (error) {
       console.error("Registration failed!", error);
       alert(error);
