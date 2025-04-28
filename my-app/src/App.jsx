@@ -8,6 +8,7 @@ import Login from "./Login/Login";
 import Homepage from "./Homepage/Homepage";
 import BankAccount from "./BankAccount/BankAccount";
 import TransactionsInfo from "./TransactionsInfo/TransactionsInfo";
+import Transfer from "./Transfer/Transfer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/home" element={<Homepage />} />
         <Route path="/bank-account/:id" element={<BankAccount />} />
         <Route path="/transactions/:id" element={<TransactionsInfo />} />
+        <Route path="/transfer-money" element={<Transfer />} />
       </Routes>
     </Router>
   );

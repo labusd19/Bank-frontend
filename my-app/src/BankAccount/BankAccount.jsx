@@ -61,52 +61,56 @@ function BankAccount() {
           <h1 className="text-2xl font-semibold mb-4 text-center">
             Transactions for Account #{bankAccount.accountNumber}
           </h1>
-          <table className="w-full table-auto border border-gray-300">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="p-2 border">Date</th>
-                <th className="p-2 border">Sender</th>
-                <th className="p-2 border">Receiver</th>
-                <th className="p-2 border">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {transactions.map((transaction) => (
-                <tr
-                  key={transaction.id}
-                  className="text-center hover:bg-gray-50"
-                  onClick={() => navigate(`/transactions/${transaction.id}`)}
-                >
-                  <td className="p-2 border">
-                    {new Date(transaction.createdAt).toLocaleString("sr-RS", {
-                      day: "2-digit",
-                      month: "2-digit",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      second: "2-digit",
-                    })}
-                  </td>
-                  <td className="p-2 border">
-                    {transaction.sender_account_id}
-                  </td>
-                  <td className="p-2 border">
-                    {transaction.reciver_account_id}
-                  </td>
-                  <td
-                    className={`p-2 border border-black font-semibold ${
-                      bankAccount.accountNumber ===
-                      transaction.sender_account_id
-                        ? "text-red-500"
-                        : "text-green-600"
-                    }`}
-                  >
-                    {transaction.amount} RSD
-                  </td>
+          <div className="max-h-[400px] overflow-y-auto">
+            {" "}
+            {/* Dodaj ovu div oko tabele */}
+            <table className="w-full table-auto border border-gray-300">
+              <thead className="bg-gray-200 sticky top-0">
+                <tr>
+                  <th className="p-2 border">Date</th>
+                  <th className="p-2 border">Sender</th>
+                  <th className="p-2 border">Receiver</th>
+                  <th className="p-2 border">Amount</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {transactions.map((transaction) => (
+                  <tr
+                    key={transaction.id}
+                    className="text-center hover:bg-gray-300"
+                    onClick={() => navigate(`/transactions/${transaction.id}`)}
+                  >
+                    <td className="p-2 border">
+                      {new Date(transaction.createdAt).toLocaleString("sr-RS", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                      })}
+                    </td>
+                    <td className="p-2 border">
+                      {transaction.sender_account_id}
+                    </td>
+                    <td className="p-2 border">
+                      {transaction.reciver_account_id}
+                    </td>
+                    <td
+                      className={`p-2 border border-black font-semibold ${
+                        bankAccount.accountNumber ===
+                        transaction.sender_account_id
+                          ? "text-red-500"
+                          : "text-green-600"
+                      }`}
+                    >
+                      {transaction.amount} RSD
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <p className="text-lg text-gray-500 text-center">
