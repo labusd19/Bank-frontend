@@ -20,7 +20,7 @@ function Transfer() {
     }
 
     try {
-      const { data } = await api.get("/bank-account", {
+      const { data } = await api.get("/bank-accounts", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAccounts(data);

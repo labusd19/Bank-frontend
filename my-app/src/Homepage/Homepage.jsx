@@ -15,7 +15,7 @@ function Homepage() {
     }
 
     try {
-      const { data } = await api.get("/bank-account", {
+      const { data } = await api.get("/bank-accounts", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBankAccounts(data);
