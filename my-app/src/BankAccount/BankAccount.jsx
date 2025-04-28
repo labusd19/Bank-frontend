@@ -61,7 +61,16 @@ function BankAccount() {
           <h1 className="text-2xl font-semibold mb-4 text-center">
             Transactions for Account #{bankAccount.accountNumber}
           </h1>
-          <div className="max-h-[400px] overflow-y-auto">
+          <div
+            className="max-h-[400px] overflow-y-auto
+            [&::-webkit-scrollbar]:w-2
+            [&::-webkit-scrollbar-track]:rounded-full
+            [&::-webkit-scrollbar-track]:bg-gray-100
+            [&::-webkit-scrollbar-thumb]:rounded-full
+            [&::-webkit-scrollbar-thumb]:bg-gray-300
+            dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+            dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500"
+          >
             {" "}
             {/* Dodaj ovu div oko tabele */}
             <table className="w-full table-auto border border-gray-300">
